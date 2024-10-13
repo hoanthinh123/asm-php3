@@ -66,8 +66,8 @@ Route::middleware([Authenticate::class, CheckAuth::class])->group(function () {
         Route::put('/edit/{book}', [AdminBookController::class, 'update'])->name('admin.books.update');
         Route::delete('/delete/{book}', [AdminBookController::class, 'destroy'])->name('admin.books.destroy');
         });
+        // Category
         Route::prefix('/category')->group(function () {
-
         Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
         Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
         Route::post('/create', [CategoryController::class, 'store'])->name('admin.categories.store');
