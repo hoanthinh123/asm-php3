@@ -25,7 +25,7 @@ class AuthController extends Controller
         }
         if (Auth::attempt($data)) {
             
-            return redirect()->route('admin.users.index');
+            return redirect()->route('admin.users.home');
         } else {
             return redirect()->back()->with('message', 'Username hoặc Password không đúng!');
         }
