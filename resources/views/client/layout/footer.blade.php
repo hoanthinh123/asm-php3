@@ -3,3 +3,8 @@
     <a href="#" class="text-white me-2">Chính sách bảo mật</a>
     <a href="#" class="text-white">Điều khoản dịch vụ</a>
 </footer>
+
+<!--
+    sửa layout admin product
+    thêm ảnh đại diện ở đăng nhập
+-->

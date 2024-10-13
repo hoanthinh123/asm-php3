@@ -15,11 +15,9 @@ class CategorySeeder extends Seeder
     {
         //
         DB::table("categories")->insert([
-            ['name'=> 'Toán'],
-            ['name'=> 'Lý'],
-            ['name'=> 'Hóa'],
-            ['name'=> 'Sinh'],
-            ['name'=> 'Thể dục']
+            ['name'=> 'Chanel'],
+            ['name'=> 'Dior'],
+            ['name'=> 'Calvin Klein'],
             
         ]);
     }
