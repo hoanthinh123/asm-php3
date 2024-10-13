@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="card-body">
-    <h1 class="text-center">Cập nhập Book</h1>
+    <h1 class="text-center">Cập nhập Product</h1>
 
     <form action="{{ route('admin.books.update',$book)}}" method="post" enctype="multipart/form-data">
         @csrf

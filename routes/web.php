@@ -64,6 +64,8 @@ Route::middleware([Authenticate::class, CheckAuth::class])->group(function () {
         Route::post('/create', [AdminBookController::class, 'store'])->name('admin.books.store');
         Route::get('/edit/{book}', [AdminBookController::class, 'edit'])->name('admin.books.edit');
         Route::put('/edit/{book}', [AdminBookController::class, 'update'])->name('admin.books.update');
+        Route::get('/detail/{book}', [AdminBookController::class, 'detail'])->name('admin.books.detail');
+
         Route::delete('/delete/{book}', [AdminBookController::class, 'destroy'])->name('admin.books.destroy');
         });
         // Category

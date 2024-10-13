@@ -61,7 +61,7 @@
                         <td>{{ $book->Quantity }}</td>
                         <td>{{ $book->category->name }}</td>
                         <td>
-                            <a href="" class="btn btn-success">Show</a>
+                            <a href="{{ route('admin.books.detail', $book) }}" class="btn btn-success">Show</a>
                                 <a href="{{ route('admin.books.edit', $book) }}" style="display: inline-block"
                                     class="btn btn-primary mx-1 col-auto">Edit</a>
                                 <form action="{{ route('admin.books.destroy', $book) }}" class="col-auto" method="post" style="display: inline-block">

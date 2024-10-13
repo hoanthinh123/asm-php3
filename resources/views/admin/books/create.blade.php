@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('title')
-    Admin
+Thêm mới
 @endsection
 @section('content')
 <div class="card-body">
-    <h1 class="text-center">Thêm mới Book</h1>
+    <h1 class="text-center">Thêm mới Product</h1>
 
     <form action="{{ route('admin.books.store')}}" method="post" enctype="multipart/form-data">
         @csrf

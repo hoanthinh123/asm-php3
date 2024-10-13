@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     //
+    public function detail(Book $book)
+    {
+        $cate = Category::all();
+
+        return view('admin.books.detail', compact('book', 'cate'));
+    }
     public function index(Request $request)
     {
         $query = $request->input("query");
