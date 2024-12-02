@@ -20,7 +20,7 @@
             </div>
             <!-- Thông tin sản phẩm -->
             <div class="col-md-6">
-                <h3 class="text-primary">Giá: {{ number_format($detailOne->Price, 0, '.', '.') }} VND</h3>
+                <h3 class="text-primary">Giá: {{ number_format($detailOne->price, 0, '.', '.') }} VND</h3>
                 <p>Mô tả ngắn về sản phẩm. Đây là nơi bạn có thể giới thiệu sản phẩm của mình một cách chi tiết, cung cấp
                     các thông tin cần thiết.</p>
 
@@ -34,9 +34,10 @@
                 <ul class="list-unstyled">
                     <li><strong>Tình trạng:</strong> Còn hàng</li>
                     <li><strong>Loại nước hoa:</strong> {{ $detailOne->category_name }} </li>
-                    <li><strong>Xuất xứ :</strong> {{ $detailOne->author }} </li>
-                    <li><strong>Phong cách :</strong> {{ $detailOne->publisher }} </li>
-                    <li><strong>Số lượng :</strong> {{ $detailOne->Quantity }} </li>
+                    <li><strong>Xuất xứ :</strong> {{ $detailOne->origin }} </li>
+                    <li><strong>Phong cách :</strong> {{ $detailOne->style }} </li>
+                    <li><strong>Số lượng :</strong> {{ $detailOne->quantity }} </li>
+                    <li><strong>Năm sản xuất :</strong> {{ $detailOne->release_date }} </li>
 
                 </ul>
             </div>
@@ -47,8 +48,7 @@
                 <div class="row mt-5">
                     <div class="col-12">
                         <h4>Mô tả chi tiết</h4>
-                        <p>Đây là mô tả đầy đủ về sản phẩm, bao gồm tất cả các tính năng, chi tiết kỹ thuật và bất kỳ thông
-                            tin nào khác mà khách hàng có thể cần biết.</p>
+                        <p>{{ $detailOne->description }}</p>
                     </div>
                 </div>
                 <hr>
@@ -56,17 +56,17 @@
                 <div class="row mt-5">
                     <h2 class="text-center mb-4">Sản Phẩm cùng loại</h2>
                     <div class="row">
-                        @foreach ($relatedBooks as $relatedBook)
+                        @foreach ($relatedPerfumes as $perfume)
                             <div class="col-md-3 mb-4">
                                 <div class="card">
-                                    <a href="{{ route('client.books.detail', $relatedBook->id) }}">
-                                        <img src="{{ asset('storage') . '/' . $relatedBook->thumbnail }}"
+                                    <a href="{{ route('client.perfumes.detail', $perfume) }}">
+                                        <img src="{{ asset('storage') . '/' . $perfume->thumbnail }}"
                                             class="card-img-top" alt="Product 1"></a>
                                     <div class="card-body">
-                                        <a href="{{route('client.books.detail',$relatedBook->id)}}" class="text-danger text-decoration-none">
-                                        <h5 class="card-title">{{ $relatedBook->title }}</h5></a>
-                                        <p class="card-text">Giá: {{ number_format($relatedBook->Price,0,'.','.')  }}VND</p>
-                                        <a href="{{ route('client.books.detail', $relatedBook->id) }}"
+                                        <a href="{{route('client.perfumes.detail',$perfume->id)}}" class="text-danger text-decoration-none">
+                                        <h5 class="card-title">{{ $perfume->title }}</h5></a>
+                                        <p class="card-text">Giá: {{ number_format($perfume->price,0,'.','.')  }}VND</p>
+                                        <a href="{{ route('client.perfumes.detail', $perfume->id) }}"
                                             class="btn btn-primary">Mua ngay</a>
                                     </div>
                                 </div>

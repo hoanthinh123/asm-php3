@@ -6,7 +6,7 @@ Thêm mới
 <div class="card-body">
     <h1 class="text-center">Thêm mới Product</h1>
 
-    <form action="{{ route('admin.books.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.perfumes.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <!-- Full Name -->
@@ -26,50 +26,59 @@ Thêm mới
         @error('thumbnail')
             <span class="text-danger">{{ $message }}</span>
         @enderror
-        <!-- author -->
+        <!-- description -->
         <div class="mb-3">
-            <label for="author" class="form-label">author</label>
-            <input type="text" name="author" class="form-control" id="author"
-                placeholder="Enter your author">
+            <label for="description" class="form-label">description</label>
+            <textarea type="text" name="description" class="form-control" id="description"
+                placeholder="Enter your description"></textarea>
         </div>
-        @error('author')
+        @error('description')
             <span class="text-danger">{{ $message }}</span>
         @enderror
-        <!-- publisher -->
+        <!-- origin -->
         <div class="mb-3">
-            <label for="publisher" class="form-label">publisher</label>
-            <input type="text" name="publisher" class="form-control" id="publisher"
-                placeholder="Enter your publisher">
+            <label for="origin" class="form-label">origin</label>
+            <input type="text" name="origin" class="form-control" id="origin"
+                placeholder="Enter your origin">
         </div>
-        @error('publisher')
+        @error('origin')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+         <!-- style -->
+         <div class="mb-3">
+            <label for="style" class="form-label">style</label>
+            <input type="text" name="style" class="form-control" id="style"
+                placeholder="Enter your style">
+        </div>
+        @error('style')
             <span class="text-danger">{{ $message }}</span>
         @enderror
         
-        <!-- Price -->
+        <!-- price -->
         <div class="mb-3">
-            <label for="Price" class="form-label">Price</label>
-            <input type="number" name="Price" class="form-control" id="Price"
-                placeholder="Enter your Price">
+            <label for="price" class="form-label">price</label>
+            <input type="number" name="price" class="form-control" id="price"
+                placeholder="Enter your price">
         </div>
-        @error('Price')
+        @error('price')
             <span class="text-danger">{{ $message }}</span>
         @enderror
-         <!-- Quantity -->
+         <!-- quantity -->
          <div class="mb-3">
-            <label for="Quantity" class="form-label">Quantity</label>
-            <input type="number" name="Quantity" class="form-control" id="Quantity"
-                placeholder="Enter your Quantity">
+            <label for="quantity" class="form-label">quantity</label>
+            <input type="number" name="quantity" class="form-control" id="quantity"
+                placeholder="Enter your quantity">
         </div>
-        @error('Quantity')
+        @error('quantity')
             <span class="text-danger">{{ $message }}</span>
         @enderror
-        <!-- Publication -->
+        <!-- release_date -->
         <div class="mb-3">
-            <label for="Publication" class="form-label">Publication</label>
-            <input type="date" name="Publication" class="form-control w-25" id="Publication"
-                placeholder="Enter your Publication">
+            <label for="release_date" class="form-label">release_date</label>
+            <input type="date" name="release_date" class="form-control w-25" id="release_date"
+                placeholder="Enter your release_date">
         </div>
-        @error('Publication')
+        @error('release_date')
             <span class="text-danger">{{ $message }}</span>
         @enderror
         <!--Category-->

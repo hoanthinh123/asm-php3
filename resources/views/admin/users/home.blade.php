@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Products</h5>
                         <p class="card-text">Manage Product</p>
-                        <a href="{{ route('admin.books.index') }}" class="btn btn-primary">Go to Settings</a>
+                        <a href="{{ route('admin.perfumes.index') }}" class="btn btn-primary">Go to Settings</a>
                     </div>
                 </div>
             </div>

@@ -56,7 +56,7 @@ class AuthController extends Controller
                         // $data['image'] = $request->file('image')->store('products', 'public');
         }
         User::query()->create($data);
-        return redirect()->route('login')->with('message', 'Đăng ký thành công');
+        return redirect()->route('login')->with('messaged', 'Đăng ký thành công');
     }
     public function logout()
     {

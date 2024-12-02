@@ -3,45 +3,46 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Book;
 use App\Models\Category;
+use App\Models\Perfume;
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class PerfumeController extends Controller
 {
     //
-    public function detail(Book $book)
+    public function detail(Perfume $Perfume)
     {
         $cate = Category::all();
 
-        return view('admin.books.detail', compact('book', 'cate'));
+        return view('admin.perfumes.detail', compact('Perfume', 'cate'));
     }
     public function index(Request $request)
     {
         $query = $request->input("query");
         if ($query) {
-            $books = Book::where("title", "like", "%" . $query . "%")->OrderByDesc('id')->paginate(5);
+            $perfumes = Perfume::where("title", "like", "%" . $query . "%")->OrderByDesc('id')->paginate(5);
         } else {
-            $books = Book::OrderByDesc('id')->paginate(6);
+            $perfumes = Perfume::OrderByDesc('id')->paginate(6);
         }
-        return view("admin.books.index", compact('query',"books"));
+        return view("admin.perfumes.index", compact('query',"perfumes"));
     }
     public function create()
     {
         $cate = Category::all();
 
-        return view("admin.books.create", compact("cate"));
+        return view("admin.perfumes.create", compact("cate"));
     }
-    public function store(Request $request, Book $book)
+    public function store(Request $request, Perfume $Perfume)
     {
         $data = $request->validate([
             'title' => ['required', 'min:3'],
             'thumbnail' => ['required', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'author' => ['required', 'min:1'],
-            'publisher' => ['required', 'min:3'],
-            'Publication' => ['required'],
-            'Price' => ['required'],
-            'Quantity' => ['required'],
+            'description' => ['required', 'min:1'],
+            'origin' => ['required', 'min:1'],
+            'style' => ['required'],
+            'price' => ['required'],
+            'quantity' => ['required'],
+            'release_date' => ['required'],
             'Category_id' => ['required'],
         ]);
         $data = $request->except('thumbnail');
@@ -53,29 +54,30 @@ class BookController extends Controller
             $data['thumbnail'] = $files_thumbnails;
             // $data['image'] = $request->file('image')->store('products', 'public');
         }
-        Book::query()->create($data);
-        return redirect()->route('admin.books.index')->with('message', 'Đăng ký thành công');
+        Perfume::query()->create($data);
+        return redirect()->route('admin.perfumes.index')->with('message', 'Đăng ký thành công');
     }
-    public function edit(Book $book)
+    public function edit(Perfume $Perfume)
     {
         $cate = Category::all();
 
-        return view('admin.books.edit', compact('book', 'cate'));
+        return view('admin.perfumes.edit', compact('Perfume', 'cate'));
     }
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Perfume $Perfume)
     {
         $data = $request->validate([
             'title' => ['required', 'min:3'],
             'thumbnail' => ['mimes:jpeg,png,jpg,gif', 'max:2048'],
-            'author' => ['required', 'min:1'],
-            'publisher' => ['required', 'min:3'],
-            'Publication' => ['required'],
-            'Price' => ['required'],
-            'Quantity' => ['required'],
+            'description' => ['required', 'min:1'],
+            'origin' => ['required', 'min:3'],
+            'style' => ['required'],
+            'price' => ['required'],
+            'quantity' => ['required'],
+            'release_date' => ['required'],
             'Category_id' => ['required'],
         ]);
         $data = $request->except('thumbnail');
-        $thumbnail_old = $book->thumbnail;
+        $thumbnail_old = $Perfume->thumbnail;
         $data['thumbnail'] = $thumbnail_old;
         // Kiểm tra xem có file hình ảnh không
         if ($request->hasFile('thumbnail')) {
@@ -85,12 +87,12 @@ class BookController extends Controller
             // $data['image'] = $request->file('image')->store('products', 'public');
         }
 
-        $book->update($data);
-        return redirect()->route('admin.books.index')->with('message', 'Cập nhập thành công');
+        $Perfume->update($data);
+        return redirect()->route('admin.perfumes.index')->with('message', 'Cập nhập thành công');
     }
-    public function destroy(Book $book)
+    public function destroy(Perfume $Perfume)
     {
-        $book->delete();
+        $Perfume->delete();
         return redirect()->back()->with("messagee", "Xóa thành công");
     }
 }

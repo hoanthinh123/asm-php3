@@ -23,25 +23,25 @@
         </style>
         <div class="row">
             <!-- Sản phẩm 1 -->
-            @foreach ($listbooks as $book)
+            @foreach ($listPerfumes as $perfume)
                 <div class="col-md-3">
                     <div class="card mb-4">
-                        <a href="{{route('client.books.detail',$book->id)}}" class="a">
+                        <a href="{{route('client.perfumes.detail',$perfume->id)}}" class="a">
 
-                            <img src="{{ asset('storage').'/'. $book->thumbnail }}" class="card-img-top" alt="Sản phẩm 1">
+                            <img src="{{ asset('storage').'/'. $perfume->thumbnail }}" class="card-img-top" alt="Sản phẩm 1">
                         </a>
                         <div class="card-body">
-                            <a href="{{route('client.books.detail',$book->id)}}" class="a">
-                                <h5 class="card-title" style="font-size: 18px">{{ Str::limit($book->title, 20,'...')  }}</h5>
+                            <a href="{{route('client.perfumes.detail',$perfume->id)}}" class="a">
+                                <h5 class="card-title" style="font-size: 18px">{{ Str::limit($perfume->title, 20,'...')  }}</h5>
                             </a>
-                            <p class="card-text">Giá: {{ number_format($book->Price,0,'.','.')  }}VND</p>
-                            <a href="{{route('client.books.detail',$book->id)}}" class="btn btn-primary">Xem chi tiết</a>
+                            <p class="card-text">Giá: {{ number_format($perfume->price,0,'.','.')  }}VND</p>
+                            <a href="{{route('client.perfumes.detail',$perfume->id)}}" class="btn btn-primary">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
             @endforeach
 
-            {{$listbooks->links()}}
+            {{$listPerfumes->links()}}
         </div>
     </div>
 @endsection

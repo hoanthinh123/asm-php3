@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Book;
 use App\Models\Category;
+use App\Models\Perfume;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,12 +14,12 @@ class UserController extends Controller
 {
     //
     public function home(){
-        $listsp = DB::table('books')
-        ->join('categories', 'books.Category_id', '=', 'categories.id')
-        ->select('categories.name as tendm', DB::raw('count(books.Category_id) as count_sp'), DB::raw('count(books.id) as count'))
-        ->groupBy('books.Category_id')
+        $listsp = DB::table('perfumes')
+        ->join('categories', 'perfumes.Category_id', '=', 'categories.id')
+        ->select('categories.name as tendm', DB::raw('count(perfumes.Category_id) as count_sp'), DB::raw('count(perfumes.id) as count'))
+        ->groupBy('perfumes.Category_id')
         ->get();
-        $countSP = Book::count();
+        $countSP = Perfume::count();
 
         return view('admin.users.home',compact('listsp','countSP'));
     }

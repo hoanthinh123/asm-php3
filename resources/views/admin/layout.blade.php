@@ -39,7 +39,7 @@
         <h4 class="text-white">Admin Panel</h4>
         <a href="{{route('admin.users.home')}}">Dashboard</a>
         <a href="{{route('admin.users.index')}}">Users</a>
-        <a href="{{route('admin.books.index')}}">Products</a>
+        <a href="{{route('admin.perfumes.index')}}">Products</a>
         <a href="{{route('admin.categories.index')}}">Category</a>
 
        

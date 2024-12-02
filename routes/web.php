@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Admin\BookController as AdminBookController;
 use App\Http\Controllers\Admin\CategoryController ;
+use App\Http\Controllers\Admin\PerfumeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\Client\BookController as ClientBookController;
+use App\Http\Controllers\Client\PerfumeController as ClientPerfumeController;
 use App\Http\Controllers\Client\UserController as ClientUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticate;
@@ -28,11 +30,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('client.home');
 // })->name('client.home');
-Route::get("/", [ClientBookController::class,"home"])->name("client.home");
-Route::get("/detail", [ClientBookController::class,"chitiet"])->name("client.detail");
-Route::get('/category/{id}',[ClientBookController::class,'list'])->name('client.list');
-Route::get('/books/{book}', [ClientBookController::class, 'detail'])->name('client.books.detail');
-Route::get('/list-product',[ClientBookController::class,'listProduct'])->name('client.listProduct');
+Route::get("/", [ClientPerfumeController::class,"home"])->name("client.home");
+Route::get("/detail", [ClientPerfumeController::class,"chitiet"])->name("client.detail");
+Route::get('/category/{id}',[ClientPerfumeController::class,'list'])->name('client.list');
+Route::get('/perfumes/{perfume}', [ClientPerfumeController::class, 'detail'])->name('client.perfumes.detail');
+Route::get('/list-product',[ClientPerfumeController::class,'listProduct'])->name('client.listProduct');
 
 
 
@@ -56,18 +58,17 @@ Route::middleware([Authenticate::class, CheckAuth::class])->group(function () {
         Route::put('/edit/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
         Route::delete('/delete/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
         });
-        //s
-        // books
-        Route::prefix('/books')->group(function () {
-        Route::get('/', [AdminBookController::class, 'index'])->name('admin.books.index');
-        Route::get('/create', [AdminBookController::class, 'create'])->name('admin.books.create');
-        Route::post('/create', [AdminBookController::class, 'store'])->name('admin.books.store');
-        Route::get('/edit/{book}', [AdminBookController::class, 'edit'])->name('admin.books.edit');
-        Route::put('/edit/{book}', [AdminBookController::class, 'update'])->name('admin.books.update');
-        Route::get('/detail/{book}', [AdminBookController::class, 'detail'])->name('admin.books.detail');
-
-        Route::delete('/delete/{book}', [AdminBookController::class, 'destroy'])->name('admin.books.destroy');
-        });
+        //perfumes
+        Route::prefix('/perfumes')->group(function () {
+            Route::get('/', [PerfumeController::class, 'index'])->name('admin.perfumes.index');
+            Route::get('/create', [PerfumeController::class, 'create'])->name('admin.perfumes.create');
+            Route::post('/create', [PerfumeController::class, 'store'])->name('admin.perfumes.store');
+            Route::get('/edit/{perfume}', [PerfumeController::class, 'edit'])->name('admin.perfumes.edit');
+            Route::put('/edit/{perfume}', [PerfumeController::class, 'update'])->name('admin.perfumes.update');
+            Route::get('/detail/{perfume}', [PerfumeController::class, 'detail'])->name('admin.perfumes.detail');
+    
+            Route::delete('/delete/{perfume}', [PerfumeController::class, 'destroy'])->name('admin.perfumes.destroy');
+            });
         // Category
         Route::prefix('/category')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
