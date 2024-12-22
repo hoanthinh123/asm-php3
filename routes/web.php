@@ -1,15 +1,10 @@
 <?php
-
-use App\Http\Controllers\Admin\BookController as AdminBookController;
-use App\Http\Controllers\Admin\CategoryController ;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PerfumeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\Client\BookController as ClientBookController;
 use App\Http\Controllers\Client\PerfumeController as ClientPerfumeController;
 use App\Http\Controllers\Client\UserController as ClientUserController;
-use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckAuth;
 use Illuminate\Support\Facades\Route;
